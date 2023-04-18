@@ -35,7 +35,6 @@ public class SignInActivity extends AppCompatActivity {
         signUpTV = findViewById(R.id.signUpTV);
         forgotPasswordTV = findViewById(R.id.forgotPasswordTV);
 
-
         /**
          * retrieves the email and password input from the user
          * and authenticates the user through the google api
