@@ -22,31 +22,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <TextView
                 android:id="@+id/firstNameTV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="name"
                 android:textAlignment="center"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lastNameTV"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:text="last name"
-                android:fontFamily="@font/roboto_medium"
                 android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_medium"
+                android:text="last name"
                 android:textAlignment="center"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -54,7 +57,8 @@
             android:id="@+id/emailTV"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_marginEnd="58dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:ems="10"
             android:fontFamily="@font/roboto_medium"
             android:hint="email"
@@ -64,7 +68,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
