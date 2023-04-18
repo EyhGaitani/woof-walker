@@ -3,6 +3,7 @@ package com.example.firebaseexample;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,8 +23,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
     private EditText firstNameET;
     private EditText lastNameET;
     private EditText emailET;
-    private EditText priceET;
-    private Button editBTN;
+    private Button okBTN;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -38,32 +38,33 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
         firstNameET = findViewById(R.id.firstNameET);
         lastNameET = findViewById(R.id.lastNameET);
         emailET = findViewById(R.id.emailET);
-        priceET = findViewById(R.id.priceET);
-        editBTN = findViewById(R.id.updateBTN);
+        okBTN = findViewById(R.id.okBTN);
 
         getUserInfo();
+        getWoofWalkerUserInfo();
 
         /**
-         * When user clicks the {@link editBTN}  the profile is updated
+         * When user clicks the {@link okBTN}  the profile is created
+         * and the user
          */
-        editBTN.setOnClickListener(new View.OnClickListener() {
+        okBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile();
+                createProfile();
+                Intent i = new Intent(BecomeWoofWalkerActivity.this, MainActivity.class);
+                startActivity(i);
             }
         });
     }
 
     //updates the user email and password in the Firebase Realtime Database
-    public void updateProfile () {
+    public void createProfile() {
         String userFirstName = firstNameET.getText().toString();
         reference.child("UsersWW").child(firebaseUser.getUid()).child("userFirstName").setValue(userFirstName);
         String userLastName = lastNameET.getText().toString();
         reference.child("UsersWW").child(firebaseUser.getUid()).child("userLastName").setValue(userLastName);
         String userEmail = emailET.getText().toString();
         reference.child("UsersWW").child(firebaseUser.getUid()).child("userEmail").setValue(userEmail);
-        String userPrice = priceET.getText().toString();
-        reference.child("UsersWW").child(firebaseUser.getUid()).child("userPrice").setValue(userPrice);
     }
 
     public void getUserInfo(){
@@ -73,6 +74,25 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userEmail = snapshot.child("userEmail").getValue().toString();
                 emailET.setText(userEmail);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //If it fails, display a message to the user.
+                Toast.makeText(BecomeWoofWalkerActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getWoofWalkerUserInfo(){
+        reference.child("UsersWW").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+            //retrieves user data from the Firebase Realtime Database and populates the emailET with the user's email
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String userFirstName = snapshot.child("userFirstName").getValue().toString();
+                firstNameET.setText(userFirstName);
+                String userLastName = snapshot.child("userLastName").getValue().toString();
+                lastNameET.setText(userLastName);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

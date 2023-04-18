@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_account) {
                startActivity(new Intent(MainActivity.this, MyAccountActivity.class));
-               finish();
+
             }
         if (item.getItemId() == R.id.action_become_woof_walker) {
                startActivity(new Intent(MainActivity.this, BecomeWoofWalkerActivity.class));
-               finish();
+
         }
             if (item.getItemId() == R.id.action_log_out) {
                 auth.signOut();

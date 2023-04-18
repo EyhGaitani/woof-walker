@@ -11,6 +11,7 @@
         android:id="@+id/logoIV"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:src="@drawable/petlogo"
         app:layout_constraintBottom_toTopOf="@+id/emailET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"

@@ -36,7 +36,6 @@ public class MyAccountActivity extends AppCompatActivity {
 
         getUserInfo();
 
-
         /**
          * When user clicks the {@link updateBTN}  the profile is updated
          */
@@ -45,6 +44,7 @@ public class MyAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 updateProfile();
             }
+
         });
     }
 

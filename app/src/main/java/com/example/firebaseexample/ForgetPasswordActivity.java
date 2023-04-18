@@ -3,6 +3,7 @@ package com.example.firebaseexample;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,15 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ForgetPasswordActivity.this, "We sent an email to reset your password", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgetPasswordActivity.this
+                                            ,"Check your emails", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(ForgetPasswordActivity.this, SignInActivity.class);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    // If sign up fails, display a message to the user.
+                                    Toast.makeText(ForgetPasswordActivity.this
+                                            ,"Email address is invalid", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

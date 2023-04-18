@@ -31,7 +31,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
         holder.firstNameTV.setText(WoofWalkerUser.getUserFirstName());
         holder.lastNameTV.setText(WoofWalkerUser.getUserLastName());
         holder.emailTV.setText(WoofWalkerUser.getUserEmail());
-       // holder.priceTV.setText(WoofWalkerUser.getUserPrice());
     }
 
     @NonNull
@@ -45,7 +44,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
         TextView firstNameTV;
         TextView lastNameTV;
         TextView emailTV;
-        //TextView priceTV;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,7 +51,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
             firstNameTV = itemView.findViewById(R.id.firstNameTV);
             lastNameTV = itemView.findViewById(R.id.lastNameTV);
             emailTV = itemView.findViewById(R.id.emailTV);
-            //priceTV = itemView.findViewById(R.id.priceET);
         }
     }
 }

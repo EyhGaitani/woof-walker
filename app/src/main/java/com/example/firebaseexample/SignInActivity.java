@@ -63,7 +63,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
                 startActivity(i);
-
             }
         });
 
@@ -75,11 +74,8 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(SignInActivity.this, ForgetPasswordActivity.class);
                 startActivity(i);
-                finish();
             }
         });
-
-
     }
 
     public void signInFirebase (String userMail, String userPassword) {
@@ -95,7 +91,6 @@ public class SignInActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SignInActivity.this, "Mail or Password is not correct", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
