@@ -11,15 +11,11 @@ import com.example.firebaseexample.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-
-
 public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter.myViewHolder> {
-
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
-     *
      * @param options
      */
     public MyAdapter(@NonNull FirebaseRecyclerOptions<WoofWalkerUser> options) {
@@ -47,7 +43,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-
             firstNameTV = itemView.findViewById(R.id.firstNameTV);
             lastNameTV = itemView.findViewById(R.id.lastNameTV);
             emailTV = itemView.findViewById(R.id.emailTV);

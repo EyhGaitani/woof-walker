@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.example.firebaseexample.Adapter.MyAdapter;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    //o begin listening for data, call the startListening() method. You may want to call this in your onStart() method
+    //begin listening for data, call the startListening() method. You may want to call this in your onStart() method
     @Override
     protected void onStart() {
         super.onStart();
@@ -68,11 +67,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_account) {
                startActivity(new Intent(MainActivity.this, MyAccountActivity.class));
-
             }
         if (item.getItemId() == R.id.action_become_woof_walker) {
                startActivity(new Intent(MainActivity.this, BecomeWoofWalkerActivity.class));
-
         }
             if (item.getItemId() == R.id.action_log_out) {
                 auth.signOut();
@@ -80,6 +77,4 @@ public class MainActivity extends AppCompatActivity {
             }
             return super.onOptionsItemSelected(item);
         }
-
-
 }

@@ -45,7 +45,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
 
         /**
          * When user clicks the {@link okBTN}  the profile is created
-         * and the user
+         * and the user is transferred to the MainActivity
          */
         okBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,14 +85,14 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
 
     public void getWoofWalkerUserInfo(){
         reference.child("UsersWW").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
-            //retrieves user data from the Firebase Realtime Database and populates the emailET with the user's email
+            //retrieves user data from the Firebase Realtime Database and populates the firstNameET with the user's firsName
+            //and the lastNameET with the user's lastName
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userFirstName = snapshot.child("userFirstName").getValue().toString();
                 firstNameET.setText(userFirstName);
                 String userLastName = snapshot.child("userLastName").getValue().toString();
                 lastNameET.setText(userLastName);
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

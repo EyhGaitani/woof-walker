@@ -44,7 +44,6 @@ public class MyAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 updateProfile();
             }
-
         });
     }
 

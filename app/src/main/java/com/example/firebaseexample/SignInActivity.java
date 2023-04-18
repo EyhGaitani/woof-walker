@@ -45,7 +45,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userMail = emailET.getText().toString();
                 String userPassword = passwordET.getText().toString();
-
                 //using an if-else to make sure that the user enters email & password
                if(!userMail.equals("") && !userPassword.equals("")){
                    signInFirebase(userMail, userPassword);
