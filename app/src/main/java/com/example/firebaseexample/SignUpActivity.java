@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText signupEmailET;
@@ -48,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if(!userEmail.equals("") && !userPassword.equals("")){
                     signUpFirebase(userEmail, userPassword);
                 }else {
-                    Toast.makeText(SignUpActivity.this, "Please enter an email and password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please enter an email and password that contains at least 1 letter, 1 number, and be at least 8 characters long", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -62,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             reference.child("Users").child(auth.getUid()).child("userEmail").setValue(userEmail);
                             reference.child("Users").child(auth.getUid()).child("userPassword").setValue(userPassword);
-                            // If sign up is successful, redirect to main activity
+                            // If sign up is successful, redirect to sign in activity
                             Toast.makeText(SignUpActivity.this
                             ,"Your account has been created", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(SignUpActivity.this, SignInActivity.class);

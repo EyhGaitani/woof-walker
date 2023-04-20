@@ -41,7 +41,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
         okBTN = findViewById(R.id.okBTN);
 
         getUserInfo();
-        getWoofWalkerUserInfo();
+        //getWoofWalkerUserInfo();
 
         /**
          * When user clicks the {@link okBTN}  the profile is created
@@ -57,7 +57,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
         });
     }
 
-    //updates the user email and password in the Firebase Realtime Database
+    //creates the user Woof Walker account in the Firebase Realtime Database
     public void createProfile() {
         String userFirstName = firstNameET.getText().toString();
         reference.child("UsersWW").child(firebaseUser.getUid()).child("userFirstName").setValue(userFirstName);
@@ -83,7 +83,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
         });
     }
 
-    public void getWoofWalkerUserInfo(){
+    /**public void getWoofWalkerUserInfo(){
         reference.child("UsersWW").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
             //retrieves user data from the Firebase Realtime Database and populates the firstNameET with the user's firsName
             //and the lastNameET with the user's lastName
@@ -100,7 +100,7 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
                 Toast.makeText(BecomeWoofWalkerActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
 
     }

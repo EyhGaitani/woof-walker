@@ -9,16 +9,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Adapter;
+
 import com.example.firebaseexample.Adapter.MyAdapter;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     MyAdapter adapter;
 
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
     //begin listening for data, call the startListening() method. You may want to call this in your onStart() method
     @Override
     protected void onStart() {
