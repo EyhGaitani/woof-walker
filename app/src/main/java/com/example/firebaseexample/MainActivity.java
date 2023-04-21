@@ -9,15 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Adapter;
-
 import com.example.firebaseexample.Adapter.MyAdapter;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {

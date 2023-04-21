@@ -2,14 +2,12 @@ package com.example.firebaseexample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -46,11 +44,13 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userEmail = signupEmailET.getText().toString();
                 String userPassword = signupPasswordET.getText().toString();
+                // using regex to check password format
+                String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
                 //using an if-else to make sure that the user enters email & password
-                if(!userEmail.equals("") && !userPassword.equals("")){
+                if(!userEmail.equals("") && userPassword.matches(passwordPattern)){
                     signUpFirebase(userEmail, userPassword);
                 }else {
-                    Toast.makeText(SignUpActivity.this, "Please enter an email and password that contains at least 1 letter, 1 number, and be at least 8 characters long", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please enter an email and a password that contains at least 1 lower and upper case letter,1 number,1 character and be at least 8 characters long", Toast.LENGTH_SHORT).show();
                 }
             }
         });

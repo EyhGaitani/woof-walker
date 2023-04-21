@@ -23,17 +23,17 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull WoofWalkerUser WoofWalkerUser) {
-        holder.firstNameTV.setText(WoofWalkerUser.getUserFirstName());
-        holder.lastNameTV.setText(WoofWalkerUser.getUserLastName());
-        holder.emailTV.setText(WoofWalkerUser.getUserEmail());
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull WoofWalkerUser woofWalkerUser) {
+        holder.firstNameTV.setText(woofWalkerUser.getUserFirstName());
+        holder.lastNameTV.setText(woofWalkerUser.getUserLastName());
+        holder.emailTV.setText(woofWalkerUser.getUserEmail());
     }
 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_row,parent,false);
-        return new myViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_row, parent,false);
+        return new MyAdapter.myViewHolder(view);
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
