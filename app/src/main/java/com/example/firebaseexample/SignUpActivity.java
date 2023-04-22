@@ -3,6 +3,11 @@ package com.example.firebaseexample;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,16 +49,34 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userEmail = signupEmailET.getText().toString();
                 String userPassword = signupPasswordET.getText().toString();
+                // using regex to check email format
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 // using regex to check password format
                 String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
                 //using an if-else to make sure that the user enters email & password
-                if(!userEmail.equals("") && userPassword.matches(passwordPattern)){
+                if(userEmail.matches(emailPattern) && userPassword.matches(passwordPattern)){
                     signUpFirebase(userEmail, userPassword);
-                }else {
-                    Toast.makeText(SignUpActivity.this, "Please enter an email and a password that contains at least 1 lower and upper case letter,1 number,1 character and be at least 8 characters long", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
+                    startActivity(i);
+                }else if(!userEmail.equals(emailPattern)) {
+                    signupEmailET.setBackground(createRedBorderDrawable());
+                    Toast.makeText(SignUpActivity.this, "Please enter a valid email", Toast.LENGTH_LONG).show();
+                } else {
+                    signupPasswordET.setBackground(createRedBorderDrawable());
+                    Toast.makeText(SignUpActivity.this, "Password is not secure enough. Please choose a stronger password.", Toast.LENGTH_LONG).show();
                 }
             }
         });
+        }
+
+    // Method to create a red border drawable
+    private Drawable createRedBorderDrawable() {
+        ShapeDrawable shapeDrawable = new ShapeDrawable();
+        shapeDrawable.setShape(new RectShape());
+        shapeDrawable.getPaint().setColor(Color.RED);
+        shapeDrawable.getPaint().setStyle(Paint.Style.STROKE);
+        shapeDrawable.getPaint().setStrokeWidth(3);
+        return shapeDrawable;
     }
 
     public void signUpFirebase (String userEmail, String userPassword) {
@@ -67,9 +90,6 @@ public class SignUpActivity extends AppCompatActivity {
                             // If sign up is successful, redirect to sign in activity
                             Toast.makeText(SignUpActivity.this
                             ,"Your account has been created", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
-                            startActivity(i);
-                            finish();
                         } else {
                             // If sign up fails, display a message to the user.
                             Toast.makeText(SignUpActivity.this

@@ -3,6 +3,11 @@ package com.example.firebaseexample;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
                if(!userMail.equals("") && !userPassword.equals("")){
                    signInFirebase(userMail, userPassword);
                }else {
-                   Toast.makeText(SignInActivity.this, "Please enter an email and password", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SignInActivity.this, "Please enter an email and password", Toast.LENGTH_LONG).show();
                }
             }
         });
@@ -88,7 +93,7 @@ public class SignInActivity extends AppCompatActivity {
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignInActivity.this, "Mail or Password is not correct", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Mail or Password is not correct", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
