@@ -53,18 +53,20 @@ public class SignUpActivity extends AppCompatActivity {
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 // using regex to check password format
                 String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-                //using an if-else to make sure that the user enters email & password
-                if(userEmail.matches(emailPattern) && userPassword.matches(passwordPattern)){
-                    signUpFirebase(userEmail, userPassword);
-                    Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
-                    startActivity(i);
-                }else if(!userEmail.equals(emailPattern)) {
+                //check if the user enters valid email & password
+                if (!userEmail.matches(emailPattern)) {
                     signupEmailET.setBackground(createRedBorderDrawable());
                     Toast.makeText(SignUpActivity.this, "Please enter a valid email", Toast.LENGTH_LONG).show();
-                } else {
+                    return;
+                }
+                if (!userPassword.matches(passwordPattern)) {
                     signupPasswordET.setBackground(createRedBorderDrawable());
                     Toast.makeText(SignUpActivity.this, "Password is not secure enough. Please choose a stronger password.", Toast.LENGTH_LONG).show();
+                    return;
                 }
+                signUpFirebase(userEmail, userPassword);
+                Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
+                startActivity(i);
             }
         });
         }

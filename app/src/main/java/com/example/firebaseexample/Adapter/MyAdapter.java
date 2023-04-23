@@ -8,8 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.firebaseexample.MainActivity;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.example.firebaseexample.R;
+import com.example.firebaseexample.SignInActivity;
+import com.example.firebaseexample.SignUpActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -50,6 +54,13 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
             firstNameTV = itemView.findViewById(R.id.firstNameTV);
             lastNameTV = itemView.findViewById(R.id.lastNameTV);
             emailTV = itemView.findViewById(R.id.emailTV);
+            emailTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
         }
     }
 }
