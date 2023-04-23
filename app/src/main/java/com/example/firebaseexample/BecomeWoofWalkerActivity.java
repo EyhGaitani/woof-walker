@@ -39,7 +39,6 @@ public class BecomeWoofWalkerActivity extends AppCompatActivity {
         okBTN = findViewById(R.id.okBTN);
 
         getUserInfo();
-        //getWoofWalkerUserInfo();
 
         /**
          * When user clicks the {@link okBTN}  the profile is created
