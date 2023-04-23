@@ -54,13 +54,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
             firstNameTV = itemView.findViewById(R.id.firstNameTV);
             lastNameTV = itemView.findViewById(R.id.lastNameTV);
             emailTV = itemView.findViewById(R.id.emailTV);
-            emailTV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
         }
     }
 }
