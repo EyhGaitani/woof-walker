@@ -1,25 +1,17 @@
 package com.example.firebaseexample.Adapter;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.firebaseexample.MainActivity;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.example.firebaseexample.R;
-import com.example.firebaseexample.SignInActivity;
-import com.example.firebaseexample.SignUpActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter.myViewHolder> {
-
-
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
