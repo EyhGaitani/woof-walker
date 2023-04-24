@@ -2,8 +2,12 @@ package com.example.firebaseexample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,7 +98,34 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_activity_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                processSearch(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                processSearch(newText);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void processSearch(String query) {
+        FirebaseRecyclerOptions<WoofWalkerUser> options =
+                new FirebaseRecyclerOptions.Builder<WoofWalkerUser>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("UsersWW").orderByChild("userEmail").startAt(query)
+                                .endAt(query + "\uf8ff"), WoofWalkerUser.class)
+                        .build();
+        adapter = new MyAdapter(options);
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
     }
 
     //method is called when the user selects an item from the options menu
