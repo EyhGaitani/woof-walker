@@ -16,8 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter.myViewHolder> {
 
     /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
+     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query.
      * @param options
      */
     public MyAdapter(@NonNull FirebaseRecyclerOptions<WoofWalkerUser> options) {

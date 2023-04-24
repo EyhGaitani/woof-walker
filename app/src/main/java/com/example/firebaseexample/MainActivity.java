@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     private MyAdapter adapter;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference = database.getReference();
-    FirebaseUser firebaseUser = auth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
