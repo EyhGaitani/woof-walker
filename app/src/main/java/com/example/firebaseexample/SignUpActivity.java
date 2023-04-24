@@ -62,6 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Password is not secure enough. Please choose a stronger password.", Toast.LENGTH_LONG).show();
                     return;
                 }
+                //If sign up is successful, redirect to sign in activity
                 signUpFirebase(userEmail, userPassword);
                 Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(i);
@@ -87,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             reference.child("Users").child(auth.getUid()).child("userEmail").setValue(userEmail);
                             reference.child("Users").child(auth.getUid()).child("userPassword").setValue(userPassword);
-                            // If sign up is successful, redirect to sign in activity
+                            // If sign up is successful, display a message to the user.
                             Toast.makeText(SignUpActivity.this
                             ,"Your account has been created", Toast.LENGTH_SHORT).show();
                         } else {

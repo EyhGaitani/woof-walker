@@ -16,7 +16,6 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
     private EditText emailResetET;
     private Button resetBTN;
-
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override

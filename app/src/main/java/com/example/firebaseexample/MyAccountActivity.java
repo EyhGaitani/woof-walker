@@ -2,6 +2,9 @@ package com.example.firebaseexample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +36,6 @@ public class MyAccountActivity extends AppCompatActivity {
         myEmailET = findViewById(R.id.myEmailET);
         myPasswordET = findViewById(R.id.myPasswordET);
         updateBTN = findViewById(R.id.updateBTN);
-
         getUserInfo();
 
         /**

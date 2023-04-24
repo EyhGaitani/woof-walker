@@ -1,5 +1,7 @@
 package com.example.firebaseexample.Adapter;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,10 @@ public class MyAdapter extends FirebaseRecyclerAdapter<WoofWalkerUser, MyAdapter
             firstNameTV = itemView.findViewById(R.id.firstNameTV);
             lastNameTV = itemView.findViewById(R.id.lastNameTV);
             emailTV = itemView.findViewById(R.id.emailTV);
+
+            //emailTV design
+            emailTV.setPaintFlags(emailTV.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            emailTV.setTextColor(Color.BLUE);
         }
     }
 }

@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import com.example.firebaseexample.Adapter.MyAdapter;
 import com.example.firebaseexample.Model.WoofWalkerUser;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -19,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     FirebaseAuth auth = FirebaseAuth.getInstance();
-    MyAdapter adapter;
+    private MyAdapter adapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference();
     FirebaseUser firebaseUser = auth.getCurrentUser();
@@ -42,6 +46,33 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyAdapter(options);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        // Add a touch listener to the RecyclerView to start an email intent when the user taps an item's email address
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_UP) {
+                    View child = rv.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null) {
+                        TextView emailTV = child.findViewById(R.id.emailTV);
+                        String email = emailTV.getText().toString();
+                        if (!email.isEmpty()) {
+                            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null));
+                            startActivity(Intent.createChooser(emailIntent, "Send email"));
+                        }
+                    }
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                // Do nothing
+            }
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                // Do nothing
+            }
+        });
     }
 
     //begin listening for data, call the startListening() method. You may want to call this in your onStart() method
