@@ -3,13 +3,11 @@
 
 #### Prerequisites
 1. Android Studio
-2. Java
+2. Java JDK 11
 
 #### Installing 
 1. Clone the repository to your local machine using Git or download the ZIP file and extract it.
-2. Open Android Studio and select "Open an existing project".
-3. Navigate to the location where you cloned the repository and select the firebaseexample folder.
-4. Wait for Android Studio to finish importing the project and building the Gradle files.
+2. Navigate to the location where you cloned the repository and select the firebaseexample folder.
 
 #### Running the app
 1. Connect your Android device to your computer or start an emulator in Android Studio.
